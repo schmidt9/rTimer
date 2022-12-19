@@ -59,7 +59,7 @@ class MainViewController: UIViewController {
         
         for textField in [intervalTextField, repetitionsCountTextField, delayTextField] {
             let toolbar = UIToolbar()
-            let doneItem = UIBarButtonItem(title: "Готово", style: .done, target: self, action: #selector(textFieldDone(_:)))
+            let doneItem = UIBarButtonItem(title: "Применить", style: .done, target: self, action: #selector(textFieldDone(_:)))
             let spacingItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
             toolbar.items = [spacingItem, doneItem]
             toolbar.sizeToFit()
@@ -129,15 +129,15 @@ class MainViewController: UIViewController {
         switch activeTextField {
             
         case intervalTextField:
-            Preferences.interval = Int(intervalTextField.text ?? "0")!
+            Preferences.interval = Int(intervalTextField.text ?? "0") ?? 0
             repetitionsCountTextField.becomeFirstResponder()
             
         case repetitionsCountTextField:
-            Preferences.repetitionsCount = Int(repetitionsCountTextField.text ?? "0")!
+            Preferences.repetitionsCount = Int(repetitionsCountTextField.text ?? "0") ?? 0
             delayTextField.becomeFirstResponder()
             
         case delayTextField:
-            Preferences.delay = Int(delayTextField.text ?? "0")!
+            Preferences.delay = Int(delayTextField.text ?? "0") ?? 0
             view.endEditing(true)
             
         default:
