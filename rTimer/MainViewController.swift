@@ -31,10 +31,15 @@ class MainViewController: UIViewController {
     
     private var activeTextField: UITextField?
 
-    private var timer: Timer?
     private var isDelayTimer = true
     private var isMainTimer = false
+    private var wasReset = true
     private var delay = 0
+    private var interval = 0
+    private var totalRepetitions = 0
+    private var repetitions = 0
+
+    private var countdownTimer = CountdownTimer()
 
     private static var delayFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -48,6 +53,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,41 +90,12 @@ class MainViewController: UIViewController {
             textField?.inputAccessoryView = toolbar
         }
 
-        delay = Preferences.delay
+        countdownTimer.delegate = self
+        countdownTimer.set(countdown: Preferences.delay, totalRepetitions: Preferences.repetitionsCount)
     }
 
     func updateDelayTextField(with delay: Int) {
         delayTextField.text = Self.delayFormatter.string(from: Date(timeIntervalSince1970: Double(delay)))
-    }
-
-    // MARK: Timer
-
-    func startTimer() {
-        timer?.invalidate()
-        timer = Timer(
-                timeInterval: 1.0,
-                target: self,
-                selector: #selector(timerFired(_ :)),
-                userInfo: nil,
-                repeats: true)
-        RunLoop.current.add(timer!, forMode: .default)
-    }
-
-    func stopTimer() {
-
-    }
-
-    @objc func timerFired(_ sender: Timer) {
-        if isDelayTimer {
-            if delay == 0 {
-                isDelayTimer = false
-                isMainTimer = true
-            } else {
-                delay -= 1
-            }
-
-            updateDelayTextField(with: delay)
-        }
     }
 
     // MARK: Helpers
@@ -148,6 +129,19 @@ class MainViewController: UIViewController {
         return true
     }
 
+    func initValues() {
+        if wasReset {
+            interval = Int(intervalTextField.text ?? "0") ?? 0 * 60
+            repetitions = Int(repetitionsCountTextField.text ?? "0") ?? 0
+            totalRepetitions = repetitions
+            delay = Int(delayTextField.text ?? "0") ?? 0
+        } else {
+            interval = Preferences.interval
+            delay = Preferences.delay
+            
+        }
+    }
+
     func showAlert(with message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Продолжить", style: .default))
@@ -163,7 +157,7 @@ class MainViewController: UIViewController {
         let title = isPaused ? "Запуск" : "Пауза"
         sender.setTitle(title, for: .normal)
 
-        startTimer()
+        countdownTimer.start()
     }
     
     @IBAction func resetButtonTouchUpInside(_ sender: UIButton) {
@@ -207,6 +201,17 @@ extension MainViewController : UITextFieldDelegate {
         activeTextField = textField
     }
     
+}
+
+extension MainViewController : CountdownTimerDelegate {
+
+    func countdownTimerDidUpdateCount(_ countdownTimer: CountdownTimer, count: Int) {
+        updateDelayTextField(with: count)
+    }
+
+    func countdownTimerDidUpdateRepetitions(_ countdownTimer: CountdownTimer, totalRepetitions: Int, leftRepetitions: Int) {
+
+    }
 }
 
 extension MainViewController : SoundsTableViewControllerDelegate {
