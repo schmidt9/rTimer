@@ -73,14 +73,6 @@ class MainViewController: UIViewController {
         
         timerContainerView.layer.cornerRadius = 8
         
-        intervalTextField.text = String(Preferences.interval)
-        
-        repetitionsCountTextField.text = String(Preferences.repetitionsCount)
-        
-        delayTextField.text = String(Preferences.delay)
-        
-        soundNameLabel.text = Preferences.soundName
-        
         for textField in [intervalTextField, repetitionsCountTextField, delayTextField] {
             let toolbar = UIToolbar()
             let doneItem = UIBarButtonItem(title: "Применить", style: .done, target: self, action: #selector(textFieldDone(_:)))
@@ -91,6 +83,19 @@ class MainViewController: UIViewController {
         }
 
         countdownTimer.delegate = self
+
+        loadPreferences()
+    }
+
+    func loadPreferences() {
+        intervalTextField.text = String(Preferences.interval)
+
+        repetitionsCountTextField.text = String(Preferences.repetitionsCount)
+
+        delayTextField.text = String(Preferences.delay)
+
+        soundNameLabel.text = Preferences.soundName
+
         updateCountdownTimer()
     }
 
@@ -180,8 +185,11 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func resetButtonTouchUpInside(_ sender: UIButton) {
-        isDelayTimer = true
-        isMainTimer = false
+        countdownTimer.reset()
+
+        loadPreferences()
+
+        runButton.setTitle("Запуск", for: .normal)
     }
     
     @IBAction func playSoundSwitchValueChanged(_ sender: UISwitch) {

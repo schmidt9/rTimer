@@ -38,6 +38,8 @@ class CountdownTimer {
         self.interval = intervalInMinutes * 60
         self.totalRepetitions = totalRepetitions
         self.countdown = delay
+
+        pastRepetitions = 0
     }
 
     /// Starts or resumes countdown
