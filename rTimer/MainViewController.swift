@@ -33,6 +33,8 @@ class MainViewController: UIViewController {
 
     private var countdownTimer = CountdownTimer()
 
+    private var selectedSound: Sound?
+
     private static var delayFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -94,6 +96,8 @@ class MainViewController: UIViewController {
         delayTextField.text = String(Preferences.delay)
 
         soundNameLabel.text = Preferences.soundName
+
+        selectedSound = SoundsManager.sound(named: Preferences.soundName)
 
         updateCountdownTimer()
     }
@@ -226,6 +230,7 @@ extension MainViewController : CountdownTimerDelegate {
 
     func countdownTimerDidUpdateRepetitions(_ countdownTimer: CountdownTimer, pastRepetitions: Int, totalRepetitions: Int) {
         updateRepetitionsCountTextField(with: pastRepetitions, totalRepetitions: totalRepetitions)
+        SoundPlayer.play(selectedSound!)
     }
 
     func countdownTimerDidEndCounting(_ countdownTimer: CountdownTimer) {
@@ -236,6 +241,7 @@ extension MainViewController : CountdownTimerDelegate {
 extension MainViewController : SoundsTableViewControllerDelegate {
     
     func soundsTableViewControllerDidSelectSound(_ viewController: SoundsTableViewController, sound: Sound) {
+        selectedSound = sound
         soundNameLabel.text = sound.name
         Preferences.soundName = sound.name
     }

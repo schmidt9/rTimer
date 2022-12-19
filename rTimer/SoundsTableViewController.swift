@@ -38,13 +38,7 @@ class SoundsTableViewController: UITableViewController {
     }
     
     func loadSounds() {
-        guard let urls = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: nil) else {
-            return
-        }
-        
-        sounds = urls.map { url in
-            Sound(name: url.lastPathComponent, url: url)
-        }
+        sounds = SoundsManager.sounds
         
         tableView.reloadData()
         
@@ -52,11 +46,6 @@ class SoundsTableViewController: UITableViewController {
             tableView.selectRow(at: IndexPath(row: selectedIndex, section: 0), animated: false, scrollPosition: .top)
         }
         
-    }
-    
-    func playSound(_ sound: Sound) {
-        player = AVPlayer(url: sound.url)
-        player.play()
     }
 
 }
@@ -86,7 +75,7 @@ extension SoundsTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSound = sounds[indexPath.row]
-        playSound(selectedSound!)
+        SoundPlayer.play(selectedSound!)
         
         delegate?.soundsTableViewControllerDidSelectSound(self, sound: selectedSound!)
     }

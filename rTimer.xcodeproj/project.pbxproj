@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		36EBC34D50E6B343F7E10DAE /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBCAA319BB34E728F3A290 /* CountdownTimer.swift */; };
+		36EBC4456EA7351B85A38180 /* SoundsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBCF0611C58E66D8894A00 /* SoundsManager.swift */; };
 		36EBC58C3E7B0E37EA2FAB13 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBCDDC6F7845EE6F922AA2 /* Sound.swift */; };
+		36EBCFEBB27626F786CE9BAD /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC9F008810588D132F480 /* SoundPlayer.swift */; };
 		CE427E1F294F909E008442A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E1E294F909E008442A9 /* AppDelegate.swift */; };
 		CE427E23294F909E008442A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E22294F909E008442A9 /* MainViewController.swift */; };
 		CE427E26294F909E008442A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE427E24294F909E008442A9 /* Main.storyboard */; };
@@ -32,8 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36EBC9F008810588D132F480 /* SoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		36EBCAA319BB34E728F3A290 /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		36EBCDDC6F7845EE6F922AA2 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		36EBCF0611C58E66D8894A00 /* SoundsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundsManager.swift; sourceTree = "<group>"; };
 		CE427E1B294F909E008442A9 /* rTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE427E1E294F909E008442A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE427E22294F909E008442A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				CE427E2C294F909F008442A9 /* Info.plist */,
 				36EBCAA319BB34E728F3A290 /* CountdownTimer.swift */,
 				36EBCDDC6F7845EE6F922AA2 /* Sound.swift */,
+				36EBCF0611C58E66D8894A00 /* SoundsManager.swift */,
+				36EBC9F008810588D132F480 /* SoundPlayer.swift */,
 			);
 			path = rTimer;
 			sourceTree = "<group>";
@@ -213,6 +219,8 @@
 				CE427E1F294F909E008442A9 /* AppDelegate.swift in Sources */,
 				36EBC34D50E6B343F7E10DAE /* CountdownTimer.swift in Sources */,
 				36EBC58C3E7B0E37EA2FAB13 /* Sound.swift in Sources */,
+				36EBC4456EA7351B85A38180 /* SoundsManager.swift in Sources */,
+				36EBCFEBB27626F786CE9BAD /* SoundPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
