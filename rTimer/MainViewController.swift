@@ -30,8 +30,20 @@ class MainViewController: UIViewController {
     @IBOutlet var vibrateSwitch: UISwitch!
     
     private var activeTextField: UITextField?
-    
-    
+
+    private var timer: Timer?
+    private var isDelayTimer = true
+    private var isMainTimer = false
+    private var delay = 0
+
+    private static var delayFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.dateFormat = "mm:ss"
+
+        return formatter
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +56,8 @@ class MainViewController: UIViewController {
             viewController.soundName = soundNameLabel.text ?? ""
         }
     }
+
+    // MARK: UI
     
     func setup() {
         
@@ -65,9 +79,45 @@ class MainViewController: UIViewController {
             toolbar.sizeToFit()
             textField?.inputAccessoryView = toolbar
         }
+
+        delay = Preferences.delay
+    }
+
+    func updateDelayTextField(with delay: Int) {
+        delayTextField.text = Self.delayFormatter.string(from: Date(timeIntervalSince1970: Double(delay)))
     }
 
     // MARK: Timer
+
+    func startTimer() {
+        timer?.invalidate()
+        timer = Timer(
+                timeInterval: 1.0,
+                target: self,
+                selector: #selector(timerFired(_ :)),
+                userInfo: nil,
+                repeats: true)
+        RunLoop.current.add(timer!, forMode: .default)
+    }
+
+    func stopTimer() {
+
+    }
+
+    @objc func timerFired(_ sender: Timer) {
+        if isDelayTimer {
+            if delay == 0 {
+                isDelayTimer = false
+                isMainTimer = true
+            } else {
+                delay -= 1
+            }
+
+            updateDelayTextField(with: delay)
+        }
+    }
+
+    // MARK: Helpers
 
     func validateValues() -> Bool {
         guard let text = intervalTextField.text, !text.isEmpty, Int(text) ?? 0 != 0 else {
@@ -98,8 +148,6 @@ class MainViewController: UIViewController {
         return true
     }
 
-    // MARK: Helpers
-
     func showAlert(with message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Продолжить", style: .default))
@@ -111,10 +159,16 @@ class MainViewController: UIViewController {
     @IBAction func runButtonTouchUpInside(_ sender: UIButton) {
         guard validateValues() else { return }
 
+        let isPaused = (sender.currentTitle == "Пауза")
+        let title = isPaused ? "Запуск" : "Пауза"
+        sender.setTitle(title, for: .normal)
 
+        startTimer()
     }
     
     @IBAction func resetButtonTouchUpInside(_ sender: UIButton) {
+        isDelayTimer = true
+        isMainTimer = false
     }
     
     @IBAction func playSoundSwitchValueChanged(_ sender: UISwitch) {
