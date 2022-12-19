@@ -66,10 +66,46 @@ class MainViewController: UIViewController {
             textField?.inputAccessoryView = toolbar
         }
     }
+
+    // MARK: Timer
+
+    func validateValues() {
+        guard let text = intervalTextField.text, !text.isEmpty, Int(text) ?? 0 != 0 else {
+            showAlert(with: "Укажите интервал")
+            return
+        }
+
+        guard let text = repetitionsCountTextField.text, !text.isEmpty, Int(text) ?? 0 != 0 else {
+            showAlert(with: "Укажите количество повторений")
+            return
+        }
+
+        guard let text = delayTextField.text, !text.isEmpty else {
+            showAlert(with: "Укажите задержку")
+            return
+        }
+
+        guard let text = soundNameLabel.text, !text.isEmpty else {
+            showAlert(with: "Выберите звук")
+            return
+        }
+
+        guard playSoundSwitch.isOn || vibrateSwitch.isOn else {
+            showAlert(with: "Включите звук или вибрацию")
+            return
+        }
+    }
+
+    // MARK: Helpers
+
+    func showAlert(with message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.actions = [UIAlertAction(title: "Продолжить", style: .default)]
+        present(alert, animated: true)
+    }
     
     // MARK: UI Events
-    
-    
+
     @IBAction func runButtonTouchUpInside(_ sender: UIButton) {
     }
     
