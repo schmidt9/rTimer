@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MainViewController: UIViewController {
     
@@ -153,6 +154,18 @@ class MainViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Продолжить", style: .default))
         present(alert, animated: true)
     }
+
+    func playSoundIfAllowed() {
+        if playSoundSwitch.isOn {
+            SoundPlayer.play(selectedSound!)
+        }
+    }
+
+    func vibrateIfAllowed() {
+        if vibrateSwitch.isOn {
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+        }
+    }
     
     // MARK: UI Events
 
@@ -230,7 +243,8 @@ extension MainViewController : CountdownTimerDelegate {
 
     func countdownTimerDidUpdateRepetitions(_ countdownTimer: CountdownTimer, pastRepetitions: Int, totalRepetitions: Int) {
         updateRepetitionsCountTextField(with: pastRepetitions, totalRepetitions: totalRepetitions)
-        SoundPlayer.play(selectedSound!)
+        playSoundIfAllowed()
+        vibrateIfAllowed()
     }
 
     func countdownTimerDidEndCounting(_ countdownTimer: CountdownTimer) {
