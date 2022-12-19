@@ -46,7 +46,7 @@ class CountdownTimer {
     }
 
     func pause() {
-
+        timer?.invalidate()
     }
 
     func reset() {

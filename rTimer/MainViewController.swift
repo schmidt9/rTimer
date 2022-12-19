@@ -157,7 +157,12 @@ class MainViewController: UIViewController {
         let title = isPaused ? "Запуск" : "Пауза"
         sender.setTitle(title, for: .normal)
 
-        countdownTimer.start()
+        if isPaused {
+            countdownTimer.pause()
+        } else {
+            countdownTimer.start()
+        }
+
     }
     
     @IBAction func resetButtonTouchUpInside(_ sender: UIButton) {
