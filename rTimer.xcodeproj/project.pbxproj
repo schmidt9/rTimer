@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE427E1F294F909E008442A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E1E294F909E008442A9 /* AppDelegate.swift */; };
+		CE427E23294F909E008442A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E22294F909E008442A9 /* MainViewController.swift */; };
+		CE427E26294F909E008442A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE427E24294F909E008442A9 /* Main.storyboard */; };
+		CE427E28294F909F008442A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE427E27294F909F008442A9 /* Assets.xcassets */; };
+		CE427E2B294F909F008442A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE427E29294F909F008442A9 /* LaunchScreen.storyboard */; };
+		CE427E3F294F9A7F008442A9 /* Добро пожаловать.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E33294F9A7F008442A9 /* Добро пожаловать.mp3 */; };
+		CE427E40294F9A7F008442A9 /* Сокровище.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E34294F9A7F008442A9 /* Сокровище.mp3 */; };
+		CE427E41294F9A7F008442A9 /* Тональный сигнал.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E35294F9A7F008442A9 /* Тональный сигнал.mp3 */; };
+		CE427E42294F9A7F008442A9 /* Безмятежность.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E36294F9A7F008442A9 /* Безмятежность.mp3 */; };
+		CE427E43294F9A7F008442A9 /* Лазерный луч.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E37294F9A7F008442A9 /* Лазерный луч.mp3 */; };
+		CE427E44294F9A7F008442A9 /* Музыкальная шкатулка.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E38294F9A7F008442A9 /* Музыкальная шкатулка.mp3 */; };
+		CE427E45294F9A7F008442A9 /* Теннис.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E39294F9A7F008442A9 /* Теннис.mp3 */; };
+		CE427E46294F9A7F008442A9 /* Намек.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E3A294F9A7F008442A9 /* Намек.mp3 */; };
+		CE427E47294F9A7F008442A9 /* Поехали.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E3B294F9A7F008442A9 /* Поехали.mp3 */; };
+		CE427E48294F9A7F008442A9 /* Сладость.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E3C294F9A7F008442A9 /* Сладость.mp3 */; };
+		CE427E49294F9A7F008442A9 /* Бодрость.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E3D294F9A7F008442A9 /* Бодрость.mp3 */; };
+		CE427E4A294F9A7F008442A9 /* Свисток.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E3E294F9A7F008442A9 /* Свисток.mp3 */; };
+		CE427E4C294FA4CD008442A9 /* SoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E4B294FA4CD008442A9 /* SoundsTableViewController.swift */; };
+		CE427E4E294FAF48008442A9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E4D294FAF48008442A9 /* Preferences.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE427E1B294F909E008442A9 /* rTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE427E1E294F909E008442A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE427E22294F909E008442A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CE427E25294F909E008442A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE427E27294F909F008442A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE427E2A294F909F008442A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE427E2C294F909F008442A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE427E33294F9A7F008442A9 /* Добро пожаловать.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Добро пожаловать.mp3"; sourceTree = "<group>"; };
+		CE427E34294F9A7F008442A9 /* Сокровище.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Сокровище.mp3"; sourceTree = "<group>"; };
+		CE427E35294F9A7F008442A9 /* Тональный сигнал.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Тональный сигнал.mp3"; sourceTree = "<group>"; };
+		CE427E36294F9A7F008442A9 /* Безмятежность.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Безмятежность.mp3"; sourceTree = "<group>"; };
+		CE427E37294F9A7F008442A9 /* Лазерный луч.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Лазерный луч.mp3"; sourceTree = "<group>"; };
+		CE427E38294F9A7F008442A9 /* Музыкальная шкатулка.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Музыкальная шкатулка.mp3"; sourceTree = "<group>"; };
+		CE427E39294F9A7F008442A9 /* Теннис.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Теннис.mp3"; sourceTree = "<group>"; };
+		CE427E3A294F9A7F008442A9 /* Намек.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Намек.mp3"; sourceTree = "<group>"; };
+		CE427E3B294F9A7F008442A9 /* Поехали.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Поехали.mp3"; sourceTree = "<group>"; };
+		CE427E3C294F9A7F008442A9 /* Сладость.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Сладость.mp3"; sourceTree = "<group>"; };
+		CE427E3D294F9A7F008442A9 /* Бодрость.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Бодрость.mp3"; sourceTree = "<group>"; };
+		CE427E3E294F9A7F008442A9 /* Свисток.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Свисток.mp3"; sourceTree = "<group>"; };
+		CE427E4B294FA4CD008442A9 /* SoundsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsTableViewController.swift; sourceTree = "<group>"; };
+		CE427E4D294FAF48008442A9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE427E18294F909E008442A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE427E12294F909E008442A9 = {
+			isa = PBXGroup;
+			children = (
+				CE427E1D294F909E008442A9 /* rTimer */,
+				CE427E1C294F909E008442A9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE427E1C294F909E008442A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE427E1B294F909E008442A9 /* rTimer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE427E1D294F909E008442A9 /* rTimer */ = {
+			isa = PBXGroup;
+			children = (
+				CE427E1E294F909E008442A9 /* AppDelegate.swift */,
+				CE427E22294F909E008442A9 /* MainViewController.swift */,
+				CE427E4B294FA4CD008442A9 /* SoundsTableViewController.swift */,
+				CE427E4D294FAF48008442A9 /* Preferences.swift */,
+				CE427E32294F9A5B008442A9 /* Sounds */,
+				CE427E24294F909E008442A9 /* Main.storyboard */,
+				CE427E27294F909F008442A9 /* Assets.xcassets */,
+				CE427E29294F909F008442A9 /* LaunchScreen.storyboard */,
+				CE427E2C294F909F008442A9 /* Info.plist */,
+			);
+			path = rTimer;
+			sourceTree = "<group>";
+		};
+		CE427E32294F9A5B008442A9 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CE427E36294F9A7F008442A9 /* Безмятежность.mp3 */,
+				CE427E3D294F9A7F008442A9 /* Бодрость.mp3 */,
+				CE427E33294F9A7F008442A9 /* Добро пожаловать.mp3 */,
+				CE427E37294F9A7F008442A9 /* Лазерный луч.mp3 */,
+				CE427E38294F9A7F008442A9 /* Музыкальная шкатулка.mp3 */,
+				CE427E3A294F9A7F008442A9 /* Намек.mp3 */,
+				CE427E3B294F9A7F008442A9 /* Поехали.mp3 */,
+				CE427E3E294F9A7F008442A9 /* Свисток.mp3 */,
+				CE427E3C294F9A7F008442A9 /* Сладость.mp3 */,
+				CE427E34294F9A7F008442A9 /* Сокровище.mp3 */,
+				CE427E39294F9A7F008442A9 /* Теннис.mp3 */,
+				CE427E35294F9A7F008442A9 /* Тональный сигнал.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE427E1A294F909E008442A9 /* rTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE427E2F294F909F008442A9 /* Build configuration list for PBXNativeTarget "rTimer" */;
+			buildPhases = (
+				CE427E17294F909E008442A9 /* Sources */,
+				CE427E18294F909E008442A9 /* Frameworks */,
+				CE427E19294F909E008442A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rTimer;
+			productName = rTimer;
+			productReference = CE427E1B294F909E008442A9 /* rTimer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE427E13294F909E008442A9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					CE427E1A294F909E008442A9 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = CE427E16294F909E008442A9 /* Build configuration list for PBXProject "rTimer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE427E12294F909E008442A9;
+			productRefGroup = CE427E1C294F909E008442A9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE427E1A294F909E008442A9 /* rTimer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE427E19294F909E008442A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE427E46294F9A7F008442A9 /* Намек.mp3 in Resources */,
+				CE427E42294F9A7F008442A9 /* Безмятежность.mp3 in Resources */,
+				CE427E44294F9A7F008442A9 /* Музыкальная шкатулка.mp3 in Resources */,
+				CE427E47294F9A7F008442A9 /* Поехали.mp3 in Resources */,
+				CE427E48294F9A7F008442A9 /* Сладость.mp3 in Resources */,
+				CE427E43294F9A7F008442A9 /* Лазерный луч.mp3 in Resources */,
+				CE427E49294F9A7F008442A9 /* Бодрость.mp3 in Resources */,
+				CE427E41294F9A7F008442A9 /* Тональный сигнал.mp3 in Resources */,
+				CE427E2B294F909F008442A9 /* LaunchScreen.storyboard in Resources */,
+				CE427E28294F909F008442A9 /* Assets.xcassets in Resources */,
+				CE427E4A294F9A7F008442A9 /* Свисток.mp3 in Resources */,
+				CE427E45294F9A7F008442A9 /* Теннис.mp3 in Resources */,
+				CE427E26294F909E008442A9 /* Main.storyboard in Resources */,
+				CE427E40294F9A7F008442A9 /* Сокровище.mp3 in Resources */,
+				CE427E3F294F9A7F008442A9 /* Добро пожаловать.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE427E17294F909E008442A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE427E23294F909E008442A9 /* MainViewController.swift in Sources */,
+				CE427E4C294FA4CD008442A9 /* SoundsTableViewController.swift in Sources */,
+				CE427E4E294FAF48008442A9 /* Preferences.swift in Sources */,
+				CE427E1F294F909E008442A9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CE427E24294F909E008442A9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE427E25294F909E008442A9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CE427E29294F909F008442A9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE427E2A294F909F008442A9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE427E2D294F909F008442A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CE427E2E294F909F008442A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE427E30294F909F008442A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZNCGWW299S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = rTimer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.ankorm.rTimer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE427E31294F909F008442A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZNCGWW299S;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = rTimer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.ankorm.rTimer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE427E16294F909E008442A9 /* Build configuration list for PBXProject "rTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE427E2D294F909F008442A9 /* Debug */,
+				CE427E2E294F909F008442A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE427E2F294F909F008442A9 /* Build configuration list for PBXNativeTarget "rTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE427E30294F909F008442A9 /* Debug */,
+				CE427E31294F909F008442A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE427E13294F909E008442A9 /* Project object */;
+}
