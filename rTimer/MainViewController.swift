@@ -72,7 +72,7 @@ class MainViewController: UIViewController {
     func setup() {
         
         timerContainerView.layer.cornerRadius = 8
-        
+
         for textField in [intervalTextField, repetitionsCountTextField, delayTextField] {
             let toolbar = UIToolbar()
             let doneItem = UIBarButtonItem(title: "Применить", style: .done, target: self, action: #selector(textFieldDone(_:)))
@@ -80,6 +80,13 @@ class MainViewController: UIViewController {
             toolbar.items = [spacingItem, doneItem]
             toolbar.sizeToFit()
             textField?.inputAccessoryView = toolbar
+        }
+
+        for button in [runButton, resetButton] {
+            button!.layer.cornerRadius = 4
+            button!.clipsToBounds = true
+            button!.setBackgroundImage(UIImage.from(color: button!.backgroundColor!), for: .normal)
+            button!.setBackgroundImage(UIImage.from(color: button!.tintColor!), for: .highlighted)
         }
 
         countdownTimer.delegate = self
@@ -254,5 +261,19 @@ extension MainViewController : SoundsTableViewControllerDelegate {
         Preferences.soundName = soundName
     }
     
+}
+
+extension UIImage {
+    /// https://stackoverflow.com/a/24615631/3004003
+    static func from(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context!.setFillColor(color.cgColor)
+        context!.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+    }
 }
 
