@@ -30,15 +30,7 @@ class MainViewController: UIViewController {
     @IBOutlet var vibrateSwitch: UISwitch!
     
     private var activeTextField: UITextField?
-
-    private var isDelayTimer = true
-    private var isMainTimer = false
-    private var wasReset = true
-    private var delay = 0
-    private var interval = 0
-    private var totalRepetitions = 0
-    private var repetitions = 0
-
+    
     private var countdownTimer = CountdownTimer()
 
     private static var delayFormatter: DateFormatter = {
@@ -150,19 +142,6 @@ class MainViewController: UIViewController {
         }
 
         return true
-    }
-
-    func initValues() {
-        if wasReset {
-            interval = Int(intervalTextField.text ?? "0") ?? 0 * 60
-            repetitions = Int(repetitionsCountTextField.text ?? "0") ?? 0
-            totalRepetitions = repetitions
-            delay = Int(delayTextField.text ?? "0") ?? 0
-        } else {
-            interval = Preferences.interval
-            delay = Preferences.delay
-            
-        }
     }
 
     func showAlert(with message: String) {
