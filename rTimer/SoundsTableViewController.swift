@@ -11,17 +11,12 @@ import AVFoundation
 
 protocol SoundsTableViewControllerDelegate: AnyObject {
     
-    func soundsTableViewControllerDidSelectSound(_ viewController: SoundsTableViewController, soundName: String)
+    func soundsTableViewControllerDidSelectSound(_ viewController: SoundsTableViewController, sound: Sound)
     
 }
 
 
 class SoundsTableViewController: UITableViewController {
-    
-    struct Sound {
-        var name: String
-        var url: URL
-    }
     
     private var sounds = [Sound]()
     
@@ -93,7 +88,7 @@ extension SoundsTableViewController {
         selectedSound = sounds[indexPath.row]
         playSound(selectedSound!)
         
-        delegate?.soundsTableViewControllerDidSelectSound(self, soundName: selectedSound!.name)
+        delegate?.soundsTableViewControllerDidSelectSound(self, sound: selectedSound!)
     }
     
 }

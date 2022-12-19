@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
     @IBOutlet var vibrateSwitch: UISwitch!
     
     private var activeTextField: UITextField?
-    
+
     private var countdownTimer = CountdownTimer()
 
     private static var delayFormatter: DateFormatter = {
@@ -235,9 +235,9 @@ extension MainViewController : CountdownTimerDelegate {
 
 extension MainViewController : SoundsTableViewControllerDelegate {
     
-    func soundsTableViewControllerDidSelectSound(_ viewController: SoundsTableViewController, soundName: String) {
-        soundNameLabel.text = soundName
-        Preferences.soundName = soundName
+    func soundsTableViewControllerDidSelectSound(_ viewController: SoundsTableViewController, sound: Sound) {
+        soundNameLabel.text = sound.name
+        Preferences.soundName = sound.name
     }
     
 }
