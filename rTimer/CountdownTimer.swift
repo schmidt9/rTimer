@@ -9,8 +9,10 @@ protocol CountdownTimerDelegate : AnyObject {
     func countdownTimerDidUpdateCount(_ countdownTimer: CountdownTimer,
                                       count: Int)
     func countdownTimerDidUpdateRepetitions(_ countdownTimer: CountdownTimer,
-                                            totalRepetitions: Int,
-                                            leftRepetitions: Int)
+                                            pastRepetitions: Int,
+                                            totalRepetitions: Int)
+
+    func countdownTimerDidEndCounting(_ countdownTimer: CountdownTimer)
 
 }
 
@@ -20,21 +22,26 @@ class CountdownTimer {
 
     private var isDelayTimer = true
     private var isMainTimer = false
-    private var wasReset = true
 
-    private var countdown = 0
+    private var interval = 0
     private var totalRepetitions = 0
-    private var leftRepetitions = 0
+    private var pastRepetitions = 0
+    private var countdown = 0
+
+    var isRunning = false
+    /// Shows if the timer was paused at least once without reset
+    var wasPaused = false
 
     weak var delegate: CountdownTimerDelegate?
 
-    func set(countdown: Int, totalRepetitions: Int) {
-        self.countdown = countdown
+    func set(intervalInMinutes: Int, totalRepetitions: Int, delay: Int) {
+        self.interval = intervalInMinutes * 60
         self.totalRepetitions = totalRepetitions
-        leftRepetitions = totalRepetitions
+        self.countdown = delay
     }
 
-    func start() {
+    /// Starts or resumes countdown
+    func resume() {
         timer?.invalidate()
         timer = Timer(
                 timeInterval: 1.0,
@@ -42,15 +49,22 @@ class CountdownTimer {
                 selector: #selector(timerFired(_ :)),
                 userInfo: nil,
                 repeats: true)
+
         RunLoop.current.add(timer!, forMode: .default)
+
+        isRunning = true
     }
 
     func pause() {
+        wasPaused = true
+        isRunning = false
         timer?.invalidate()
     }
 
     func reset() {
-        wasReset = true
+        wasPaused = false
+        isRunning = false
+        timer?.invalidate()
     }
 
     @objc private func timerFired(_ sender: Timer) {
@@ -66,11 +80,22 @@ class CountdownTimer {
         }
 
         if isMainTimer {
-            guard totalRepetitions > 0 else { return }
+            if pastRepetitions == totalRepetitions {
+                delegate?.countdownTimerDidEndCounting(self)
+                reset()
+                return
+            }
 
-            countdown -= 1
+            if countdown == 0 {
+                pastRepetitions += 1
+                delegate?.countdownTimerDidUpdateRepetitions(self, pastRepetitions: pastRepetitions, totalRepetitions: totalRepetitions)
+
+                countdown = interval
+            }
 
             delegate?.countdownTimerDidUpdateCount(self, count: countdown)
+
+            countdown -= 1
         }
     }
 

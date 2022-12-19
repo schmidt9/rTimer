@@ -91,11 +91,22 @@ class MainViewController: UIViewController {
         }
 
         countdownTimer.delegate = self
-        countdownTimer.set(countdown: Preferences.delay, totalRepetitions: Preferences.repetitionsCount)
+        updateCountdownTimer()
     }
 
     func updateDelayTextField(with delay: Int) {
         delayTextField.text = Self.delayFormatter.string(from: Date(timeIntervalSince1970: Double(delay)))
+    }
+
+    func updateRepetitionsCountTextField(with pastRepetitions: Int, totalRepetitions: Int) {
+        repetitionsCountTextField.text = "\(pastRepetitions) / \(totalRepetitions)"
+    }
+
+    func updateCountdownTimer() {
+        countdownTimer.set(
+                intervalInMinutes: Preferences.interval,
+                totalRepetitions: Preferences.repetitionsCount,
+                delay: Preferences.delay)
     }
 
     // MARK: Helpers
@@ -151,16 +162,19 @@ class MainViewController: UIViewController {
     // MARK: UI Events
 
     @IBAction func runButtonTouchUpInside(_ sender: UIButton) {
-        guard validateValues() else { return }
+        if !countdownTimer.isRunning && !countdownTimer.wasPaused {
+            // validate values at startup or after reset
+            guard validateValues() else { return }
+        }
 
-        let isPaused = (sender.currentTitle == "Пауза")
-        let title = isPaused ? "Запуск" : "Пауза"
+        let isPausedTitle = (sender.currentTitle == "Пауза")
+        let title = isPausedTitle ? "Запуск" : "Пауза"
         sender.setTitle(title, for: .normal)
 
-        if isPaused {
+        if isPausedTitle {
             countdownTimer.pause()
         } else {
-            countdownTimer.start()
+            countdownTimer.resume()
         }
 
     }
@@ -196,6 +210,8 @@ class MainViewController: UIViewController {
         default:
             view.endEditing(true)
         }
+
+        updateCountdownTimer()
     }
     
 }
@@ -214,8 +230,12 @@ extension MainViewController : CountdownTimerDelegate {
         updateDelayTextField(with: count)
     }
 
-    func countdownTimerDidUpdateRepetitions(_ countdownTimer: CountdownTimer, totalRepetitions: Int, leftRepetitions: Int) {
+    func countdownTimerDidUpdateRepetitions(_ countdownTimer: CountdownTimer, pastRepetitions: Int, totalRepetitions: Int) {
+        updateRepetitionsCountTextField(with: pastRepetitions, totalRepetitions: totalRepetitions)
+    }
 
+    func countdownTimerDidEndCounting(_ countdownTimer: CountdownTimer) {
+        // TODO: impl
     }
 }
 
