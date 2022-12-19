@@ -69,44 +69,49 @@ class MainViewController: UIViewController {
 
     // MARK: Timer
 
-    func validateValues() {
+    func validateValues() -> Bool {
         guard let text = intervalTextField.text, !text.isEmpty, Int(text) ?? 0 != 0 else {
             showAlert(with: "Укажите интервал")
-            return
+            return false
         }
 
         guard let text = repetitionsCountTextField.text, !text.isEmpty, Int(text) ?? 0 != 0 else {
             showAlert(with: "Укажите количество повторений")
-            return
+            return false
         }
 
         guard let text = delayTextField.text, !text.isEmpty else {
             showAlert(with: "Укажите задержку")
-            return
+            return false
         }
 
         guard let text = soundNameLabel.text, !text.isEmpty else {
             showAlert(with: "Выберите звук")
-            return
+            return false
         }
 
         guard playSoundSwitch.isOn || vibrateSwitch.isOn else {
             showAlert(with: "Включите звук или вибрацию")
-            return
+            return false
         }
+
+        return true
     }
 
     // MARK: Helpers
 
     func showAlert(with message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.actions = [UIAlertAction(title: "Продолжить", style: .default)]
+        alert.addAction(UIAlertAction(title: "Продолжить", style: .default))
         present(alert, animated: true)
     }
     
     // MARK: UI Events
 
     @IBAction func runButtonTouchUpInside(_ sender: UIButton) {
+        guard validateValues() else { return }
+
+
     }
     
     @IBAction func resetButtonTouchUpInside(_ sender: UIButton) {
