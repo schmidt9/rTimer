@@ -31,19 +31,21 @@ class MainViewController: UIViewController {
     @IBOutlet var vibrateSwitch: UISwitch!
     
     private var activeTextField: UITextField?
-
+    
     private var countdownTimer = CountdownTimer()
-
+    
     private var selectedSound: Sound?
-
+    
+    private var vibrationCompletionCallback: (() -> Void)?
+    
     private static var delayFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "UTC")
         formatter.dateFormat = "mm:ss"
-
+        
         return formatter
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,13 +63,13 @@ class MainViewController: UIViewController {
             viewController.soundName = soundNameLabel.text ?? ""
         }
     }
-
+    
     // MARK: UI
     
     func setup() {
         
         timerContainerView.layer.cornerRadius = 8
-
+        
         for textField in [intervalTextField, repetitionsCountTextField, delayTextField] {
             let toolbar = UIToolbar()
             
@@ -92,127 +94,142 @@ class MainViewController: UIViewController {
             toolbar.sizeToFit()
             textField?.inputAccessoryView = toolbar
         }
-
+        
         for button in [runButton, resetButton] {
             button!.layer.cornerRadius = 4
             button!.clipsToBounds = true
             button!.setBackgroundImage(UIImage.from(color: button!.backgroundColor!), for: .normal)
             button!.setBackgroundImage(UIImage.from(color: button!.tintColor!), for: .highlighted)
         }
-
+        
         countdownTimer.delegate = self
-
+        
         loadPreferences()
     }
-
+    
     func loadPreferences() {
         intervalTextField.text = String(Preferences.interval)
-
+        
         repetitionsCountTextField.text = String(Preferences.repetitionsCount)
-
+        
         delayTextField.text = String(Preferences.delay)
-
+        
         soundNameLabel.text = Preferences.soundName
-
+        
         selectedSound = SoundsManager.sound(named: Preferences.soundName)
-
+        
         updateCountdownTimer()
     }
-
+    
     func updateDelayTextField(with delay: Int) {
         delayTextField.text = Self.delayFormatter.string(from: Date(timeIntervalSince1970: Double(delay)))
     }
-
+    
     func updateRepetitionsCountTextField(with pastRepetitions: Int, totalRepetitions: Int) {
         repetitionsCountTextField.text = "\(pastRepetitions) / \(totalRepetitions)"
     }
-
+    
     func updateCountdownTimer() {
         countdownTimer.set(
-                intervalInMinutes: Preferences.interval,
-                totalRepetitions: Preferences.repetitionsCount,
-                delay: Preferences.delay)
+            intervalInMinutes: Preferences.interval,
+            totalRepetitions: Preferences.repetitionsCount,
+            delay: Preferences.delay)
     }
-
+    
     // MARK: Helpers
-
+    
     func validateValues() -> Bool {
         guard let text = intervalTextField.text, !text.isEmpty, Int(text) ?? 0 != 0 else {
             showAlert(with: "Укажите интервал")
             return false
         }
-
+        
         guard let text = repetitionsCountTextField.text, !text.isEmpty, Int(text) ?? 0 != 0 else {
             showAlert(with: "Укажите количество повторений")
             return false
         }
-
+        
         guard let text = delayTextField.text, !text.isEmpty else {
             showAlert(with: "Укажите задержку")
             return false
         }
-
+        
         guard let text = soundNameLabel.text, !text.isEmpty else {
             showAlert(with: "Выберите звук")
             return false
         }
-
+        
         guard playSoundSwitch.isOn || vibrateSwitch.isOn else {
             showAlert(with: "Включите звук или вибрацию")
             return false
         }
-
+        
         return true
     }
-
+    
     func showAlert(with message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Продолжить", style: .default))
         present(alert, animated: true)
     }
-
+    
+    func resetTimer() {
+        countdownTimer.reset()
+        
+        loadPreferences()
+        
+        runButton.setTitle("Запуск", for: .normal)
+    }
+    
     func playSoundIfAllowed(twice: Bool = false) {
         if playSoundSwitch.isOn {
             SoundPlayer.play(selectedSound!, twice: twice)
         }
     }
-
-    func vibrateIfAllowed(twice: Bool = false) {
-        if vibrateSwitch.isOn {
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            
-            if twice {
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            }
-        }
+    
+    func vibrationDidEnd() {
+        
+    }
+    
+    func vibrateIfAllowed(_ completion: @escaping () -> Void) {
+        guard vibrateSwitch.isOn else { return }
+        
+        vibrationCompletionCallback = completion
+        
+        // completion setup https://stackoverflow.com/a/37487088/3004003
+        
+        let _selfPtr = unsafeBitCast(self, to: UnsafeMutableRawPointer.self)
+        
+        AudioServicesAddSystemSoundCompletion(kSystemSoundID_Vibrate, nil, nil, { sound, ptr in
+            let _self = unsafeBitCast(ptr, to: MainViewController.self)
+            _self.vibrationCompletionCallback?()
+        }, _selfPtr)
+        
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
     
     // MARK: UI Events
-
+    
     @IBAction func runButtonTouchUpInside(_ sender: UIButton) {
         if !countdownTimer.isRunning && !countdownTimer.wasPaused {
             // validate values at startup or after reset
             guard validateValues() else { return }
         }
-
+        
         let isPausedTitle = (sender.currentTitle == "Пауза")
         let title = isPausedTitle ? "Запуск" : "Пауза"
         sender.setTitle(title, for: .normal)
-
+        
         if isPausedTitle {
             countdownTimer.pause()
         } else {
             countdownTimer.resume()
         }
-
+        
     }
     
     @IBAction func resetButtonTouchUpInside(_ sender: UIButton) {
-        countdownTimer.reset()
-
-        loadPreferences()
-
-        runButton.setTitle("Запуск", for: .normal)
+        resetTimer()
     }
     
     @IBAction func playSoundSwitchValueChanged(_ sender: UISwitch) {
@@ -254,7 +271,7 @@ class MainViewController: UIViewController {
         default:
             view.endEditing(true)
         }
-
+        
         updateCountdownTimer()
     }
     
@@ -269,20 +286,24 @@ extension MainViewController : UITextFieldDelegate {
 }
 
 extension MainViewController : CountdownTimerDelegate {
-
+    
     func countdownTimerDidUpdateCount(_ countdownTimer: CountdownTimer, count: Int) {
         updateDelayTextField(with: count)
     }
-
+    
     func countdownTimerDidUpdateRepetitions(_ countdownTimer: CountdownTimer, pastRepetitions: Int, totalRepetitions: Int) {
         updateRepetitionsCountTextField(with: pastRepetitions, totalRepetitions: totalRepetitions)
         playSoundIfAllowed()
-        vibrateIfAllowed()
+        vibrateIfAllowed {}
     }
-
+    
     func countdownTimerDidEndCounting(_ countdownTimer: CountdownTimer) {
+        resetTimer()
         playSoundIfAllowed(twice: true)
-        vibrateIfAllowed(twice: true)
+        
+        vibrateIfAllowed {
+            self.vibrateIfAllowed {}
+        }
     }
 }
 
