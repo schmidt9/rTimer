@@ -138,6 +138,16 @@ class MainViewController: UIViewController {
             delay: Preferences.delay)
     }
     
+    func toggleControls(enabled: Bool) {
+        intervalTextField.isEnabled = enabled
+        repetitionsCountTextField.isEnabled = enabled
+        delayTextField.isEnabled = enabled
+        
+        pickSoundButton.isEnabled = enabled
+        playSoundSwitch.isEnabled = enabled
+        vibrateSwitch.isEnabled = enabled
+    }
+    
     // MARK: Helpers
     
     func validateValues() -> Bool {
@@ -181,6 +191,8 @@ class MainViewController: UIViewController {
         loadPreferences()
         
         runButton.setTitle("Запуск", for: .normal)
+        
+        toggleControls(enabled: true)
     }
     
     func playSoundIfAllowed(twice: Bool = false) {
@@ -217,6 +229,8 @@ class MainViewController: UIViewController {
             // validate values at startup or after reset
             guard validateValues() else { return }
         }
+        
+        toggleControls(enabled: false)
         
         let isPausedTitle = (sender.currentTitle == "Пауза")
         let title = isPausedTitle ? "Запуск" : "Пауза"
