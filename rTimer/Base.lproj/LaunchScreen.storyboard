@@ -16,18 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rTimer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIx-eo-nB7">
-                                <rect key="frame" x="135.66666666666666" y="343.66666666666669" width="142.99999999999997" height="48.666666666666686"/>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="42"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-lW-kgL">
+                                <rect key="frame" x="155.33333333333334" y="197.33333333333334" width="103.33333333333334" height="341.33333333333326"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aIx-eo-nB7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="mHd-cd-fhF"/>
-                            <constraint firstItem="aIx-eo-nB7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="srs-pr-K19"/>
+                            <constraint firstItem="nQ9-lW-kgL" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.25" id="ezC-R9-ACc"/>
+                            <constraint firstItem="nQ9-lW-kgL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fnw-KJ-BRr"/>
+                            <constraint firstItem="nQ9-lW-kgL" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ojx-3F-uKd"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,4 +34,7 @@
             <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="341.33334350585938" height="341.33334350585938"/>
+    </resources>
 </document>
