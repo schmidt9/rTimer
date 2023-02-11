@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
     
     @IBOutlet var vibrateSwitch: UISwitch!
     
+    @IBOutlet var appVersionLabel: UILabel!
+    
     private var activeTextField: UITextField?
     
     private var countdownTimer = CountdownTimer()
@@ -103,6 +105,8 @@ class MainViewController: UIViewController {
             button!.setBackgroundImage(UIImage.from(color: button!.backgroundColor!), for: .normal)
             button!.setBackgroundImage(UIImage.from(color: button!.tintColor!), for: .highlighted)
         }
+        
+        appVersionLabel.text = "Версия \(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)(\(Bundle.main.infoDictionary!["CFBundleVersion"]!))"
         
         countdownTimer.delegate = self
         
