@@ -9,7 +9,19 @@ import Foundation
 
 struct Preferences {
     
-    private static let defaults = UserDefaults.standard
+    private static let defaults: UserDefaults = {
+        
+        UserDefaults.standard.register(defaults: [
+            "interval" : 5,
+            "repetitionsCount" : 12,
+            "delay" : 40,
+            "soundName" : "Безмятежность.mp3",
+            "playsSound" : true,
+            "vibrates" : true
+        ])
+        
+        return UserDefaults.standard
+    }()
     
     static var interval: Int {
         get {

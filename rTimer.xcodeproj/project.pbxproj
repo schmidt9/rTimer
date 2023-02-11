@@ -30,7 +30,6 @@
 		CE427E4A294F9A7F008442A9 /* Свисток.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E3E294F9A7F008442A9 /* Свисток.mp3 */; };
 		CE427E4C294FA4CD008442A9 /* SoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E4B294FA4CD008442A9 /* SoundsTableViewController.swift */; };
 		CE427E4E294FAF48008442A9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E4D294FAF48008442A9 /* Preferences.swift */; };
-		CED74152295094F800DBECB7 /* 248919-800x600r1-yin-yang-koi-fish.png in Resources */ = {isa = PBXBuildFile; fileRef = CED74151295094F800DBECB7 /* 248919-800x600r1-yin-yang-koi-fish.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +58,6 @@
 		CE427E3E294F9A7F008442A9 /* Свисток.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Свисток.mp3"; sourceTree = "<group>"; };
 		CE427E4B294FA4CD008442A9 /* SoundsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsTableViewController.swift; sourceTree = "<group>"; };
 		CE427E4D294FAF48008442A9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
-		CED74151295094F800DBECB7 /* 248919-800x600r1-yin-yang-koi-fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "248919-800x600r1-yin-yang-koi-fish.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +94,6 @@
 				CE427E22294F909E008442A9 /* MainViewController.swift */,
 				CE427E4B294FA4CD008442A9 /* SoundsTableViewController.swift */,
 				CE427E4D294FAF48008442A9 /* Preferences.swift */,
-				CED74151295094F800DBECB7 /* 248919-800x600r1-yin-yang-koi-fish.png */,
 				CE427E32294F9A5B008442A9 /* Sounds */,
 				CE427E24294F909E008442A9 /* Main.storyboard */,
 				CE427E27294F909F008442A9 /* Assets.xcassets */,
@@ -187,7 +184,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED74152295094F800DBECB7 /* 248919-800x600r1-yin-yang-koi-fish.png in Resources */,
 				CE427E46294F9A7F008442A9 /* Намек.mp3 in Resources */,
 				CE427E42294F9A7F008442A9 /* Безмятежность.mp3 in Resources */,
 				CE427E44294F9A7F008442A9 /* Музыкальная шкатулка.mp3 in Resources */,
