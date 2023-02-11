@@ -46,6 +46,8 @@ class MainViewController: UIViewController {
         return formatter
     }()
     
+    // MARK: --
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -82,14 +82,15 @@ class CountdownTimer {
         }
 
         if isMainTimer {
-            if pastRepetitions == totalRepetitions {
-                delegate?.countdownTimerDidEndCounting(self)
-                reset()
-                return
-            }
-
             if countdown == 0 {
+                if pastRepetitions == totalRepetitions {
+                    delegate?.countdownTimerDidEndCounting(self)
+                    reset()
+                    return
+                }
+                
                 pastRepetitions += 1
+                
                 delegate?.countdownTimerDidUpdateRepetitions(self, pastRepetitions: pastRepetitions, totalRepetitions: totalRepetitions)
 
                 countdown = interval
