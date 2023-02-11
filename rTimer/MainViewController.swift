@@ -70,9 +70,25 @@ class MainViewController: UIViewController {
 
         for textField in [intervalTextField, repetitionsCountTextField, delayTextField] {
             let toolbar = UIToolbar()
-            let doneItem = UIBarButtonItem(title: "Применить", style: .done, target: self, action: #selector(textFieldDone(_:)))
-            let spacingItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            toolbar.items = [spacingItem, doneItem]
+            
+            let spacingItem = UIBarButtonItem(
+                barButtonSystemItem: .flexibleSpace,
+                target: nil,
+                action: nil)
+            
+            let nextItem = UIBarButtonItem(
+                title: "Далее",
+                style: .plain,
+                target: self,
+                action: #selector(textFieldDone(_:)))
+            
+            let doneItem = UIBarButtonItem(
+                title: "Готово",
+                style: .done,
+                target: self,
+                action: #selector(textFieldDone(_:)))
+            
+            toolbar.items = [spacingItem, nextItem, doneItem]
             toolbar.sizeToFit()
             textField?.inputAccessoryView = toolbar
         }
@@ -155,15 +171,19 @@ class MainViewController: UIViewController {
         present(alert, animated: true)
     }
 
-    func playSoundIfAllowed() {
+    func playSoundIfAllowed(twice: Bool = false) {
         if playSoundSwitch.isOn {
-            SoundPlayer.play(selectedSound!)
+            SoundPlayer.play(selectedSound!, twice: twice)
         }
     }
 
-    func vibrateIfAllowed() {
+    func vibrateIfAllowed(twice: Bool = false) {
         if vibrateSwitch.isOn {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            
+            if twice {
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            }
         }
     }
     
@@ -204,15 +224,28 @@ class MainViewController: UIViewController {
     }
     
     @objc func textFieldDone(_ sender: UIBarButtonItem) {
+        
+        let isNextItem = (sender.title == "Далее")
+        
         switch activeTextField {
             
         case intervalTextField:
             Preferences.interval = Int(intervalTextField.text ?? "0") ?? 0
-            repetitionsCountTextField.becomeFirstResponder()
+            
+            if isNextItem {
+                repetitionsCountTextField.becomeFirstResponder()
+            } else {
+                view.endEditing(true)
+            }
             
         case repetitionsCountTextField:
             Preferences.repetitionsCount = Int(repetitionsCountTextField.text ?? "0") ?? 0
-            delayTextField.becomeFirstResponder()
+            
+            if isNextItem {
+                delayTextField.becomeFirstResponder()
+            } else {
+                view.endEditing(true)
+            }
             
         case delayTextField:
             Preferences.delay = Int(delayTextField.text ?? "0") ?? 0
@@ -248,7 +281,8 @@ extension MainViewController : CountdownTimerDelegate {
     }
 
     func countdownTimerDidEndCounting(_ countdownTimer: CountdownTimer) {
-        // TODO: impl
+        playSoundIfAllowed(twice: true)
+        vibrateIfAllowed(twice: true)
     }
 }
 
