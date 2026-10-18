@@ -25,6 +25,13 @@ class SoundPlayer {
                 selector: #selector(playerDidFinishPlaying(notification:)),
                 name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
                 object: player.currentItem)
+        
+        do {
+            // make play in silent mode
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
 
         player.play()
     }

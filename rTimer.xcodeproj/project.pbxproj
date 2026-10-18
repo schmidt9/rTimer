@@ -30,6 +30,7 @@
 		CE427E4A294F9A7F008442A9 /* Свисток.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE427E3E294F9A7F008442A9 /* Свисток.mp3 */; };
 		CE427E4C294FA4CD008442A9 /* SoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E4B294FA4CD008442A9 /* SoundsTableViewController.swift */; };
 		CE427E4E294FAF48008442A9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE427E4D294FAF48008442A9 /* Preferences.swift */; };
+		CEB2726E3084FBF600C8E116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2726D3084FBF600C8E116 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		CE427E3E294F9A7F008442A9 /* Свисток.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Свисток.mp3"; sourceTree = "<group>"; };
 		CE427E4B294FA4CD008442A9 /* SoundsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsTableViewController.swift; sourceTree = "<group>"; };
 		CE427E4D294FAF48008442A9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		CEB2726D3084FBF600C8E116 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				36EBCDDC6F7845EE6F922AA2 /* Sound.swift */,
 				36EBCF0611C58E66D8894A00 /* SoundsManager.swift */,
 				36EBC9F008810588D132F480 /* SoundPlayer.swift */,
+				CEB2726D3084FBF600C8E116 /* SceneDelegate.swift */,
 			);
 			path = rTimer;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			files = (
 				CE427E23294F909E008442A9 /* MainViewController.swift in Sources */,
 				CE427E4C294FA4CD008442A9 /* SoundsTableViewController.swift in Sources */,
+				CEB2726E3084FBF600C8E116 /* SceneDelegate.swift in Sources */,
 				CE427E4E294FAF48008442A9 /* Preferences.swift in Sources */,
 				CE427E1F294F909E008442A9 /* AppDelegate.swift in Sources */,
 				36EBC34D50E6B343F7E10DAE /* CountdownTimer.swift in Sources */,
@@ -292,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -346,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
